@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: hotpink;
+}
+
+img{
+    display: block;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+h2{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h3{
+    margin: .50rem 0;
+}
+
+p{
+    text-align: center;
+}
+.submit-btn{
+    margin: 1rem 0;
+}
+
+.order-form-container{
+    
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+
+
+@media (min-width:50rem) {
+    .order-form-container{
+        width: 45rem;
+        margin: 2rem auto;
+    }
+
+   
+form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+img{
+   
+    max-width: 40%;
+ 
+}
+}
