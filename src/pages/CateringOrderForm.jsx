@@ -58,13 +58,16 @@ const CateringOrderForm = () => {
 
     console.log("Order Data before submission:", orderData); // Debugging line
     try {
-      const response = await fetch("https://rricuraform-1.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+      const response = await fetch(
+        "https://rricuraform-1.onrender.com/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to submit order");
