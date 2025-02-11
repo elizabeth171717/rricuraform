@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Importing React Router
+import { HashRouter as Router, Route, Routes } from "react-router-dom"; // Importing React Router
 import ThankYouPage from "./pages/ThankYouPage";
 import CateringOrderForm from "./pages/CateringOrderForm";
 function App() {
