@@ -7,7 +7,6 @@ const orderSchema = new mongoose.Schema({
   address: { type: String, required: true },
   people: { type: String, required: true },
   tamaleFilling: { type: String, required: true },
-  
   drink: { type: String, required: true },
   subtotal: { type: Number, required: true }, // Subtotal based on selected items
   total: { type: Number, required: true }, // Total price of the order

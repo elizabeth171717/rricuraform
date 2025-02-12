@@ -70,10 +70,16 @@ const CateringOrderForm = () => {
       );
 
       if (!response.ok) {
+        // Check if response has data before parsing
+
         throw new Error("Failed to submit order");
       }
 
-      const data = await response.json();
+      // Check if response has data before parsing
+      const text = await response.text();
+      console.log("Server Response Text:", text);
+
+      const data = JSON.parse(text);
       console.log("Server Response:", data);
 
       // After the alert, navigate to the Thank You page
