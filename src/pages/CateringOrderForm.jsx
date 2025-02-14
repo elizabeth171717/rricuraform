@@ -58,16 +58,13 @@ const CateringOrderForm = () => {
 
     console.log("Order Data before submission:", orderData); // Debugging line
     try {
-      const response = await fetch(
-        "https://rricuraform-1.onrender.com/api/orders/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-        }
-      );
+      const response = await fetch("https://rricuraform.onrender.com/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
 
       if (!response.ok) {
         // Check if response has data before parsing
