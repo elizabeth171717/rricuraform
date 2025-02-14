@@ -18,11 +18,19 @@ connectDB();
 // Middleware
 app.use(express.json());
 
+// ✅ CORS Configuration
+const allowedOrigins = [
+  "https://rricuraform-1.onrender.com", // ✅ Your deployed frontend
+  "http://localhost:5173" // ✅ Local development
+];
+
 app.use(cors({
-  origin: "http://localhost:5173", // Allow frontend requests
-  methods: "GET,POST", // Allow specific request methods
-  allowedHeaders: "Content-Type", // Allow specific headers
+  origin: allowedOrigins, // Allow only these origins
+  methods: ["GET", "POST"], // Allow specific request methods
+  allowedHeaders: ["Content-Type"] // Allow specific headers
 }));
+
+
 
 
 // Routes
