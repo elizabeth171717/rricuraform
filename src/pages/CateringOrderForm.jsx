@@ -59,7 +59,7 @@ const CateringOrderForm = () => {
     console.log("Order Data before submission:", orderData); // Debugging line
     try {
       const response = await fetch(
-        "https://rricuraform.onrender.com/api/orders",
+        "https://rricuraform.onrender.com/api/orders/submit",
         {
           method: "POST",
           headers: {
