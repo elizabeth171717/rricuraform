@@ -5,7 +5,7 @@
 }
 
 body{
-    background: hotpink;
+    background: #9D0759;
 }
 
 img{
@@ -39,7 +39,13 @@ p{
  
 }
 
-
+button{
+background-color: #9D0759;
+border: none;
+padding: .50rem;
+cursor: pointer;
+color: white;
+}
 
 @media (min-width:50rem) {
     .order-form-container{
