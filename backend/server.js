@@ -23,14 +23,15 @@ const allowedOrigins = [
   
   "https://rricuraform-1.onrender.com", // ✅ Your deployed frontend
   "http://localhost:5173", // ✅ Local development
-  "https://rricuraform.onrender.com" // ✅ Backend URL (for safety)
+  "https://rricuraform.onrender.com", // ✅ Backend URL (for safety)
+  "https://rricuraform.online" // ✅ Your custom domain (this was missing)
 
 ];
 
 app.use(cors({
   origin: allowedOrigins, // Allow only these origins
-  methods: ["GET", "POST"], // Allow specific request methods
-  allowedHeaders: ["Content-Type"] // Allow specific headers
+  methods: ["GET", "POST", "OPTIONS"], // Allow specific request methods
+  allowedHeaders: ["Content-Type", "Authorization"] // Allow specific headers
 }));
 
 
