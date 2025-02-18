@@ -1,26 +1,23 @@
 import "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function ThankYouPage() {
-  const navigate = useNavigate();
-
   useEffect(() => {
-    // Set a timeout to redirect after 3 seconds
+    // Set a timeout to redirect after 5 seconds
     const timer = setTimeout(() => {
-      navigate("/"); // Adjust to your form route
-    }, 3000);
+      window.location.href = "https://www.rricuratamales.com"; // ✅ Redirect to your website
+    }, 5000);
 
-    // Clear the timeout if the component is unmounted before 3 seconds
+    // Clear the timeout if the component unmounts before redirecting
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, []);
 
   return (
-    <div>
+    <div className="thankYou-container">
       <h1>Gracias for Your Order!</h1>
-      <p>
+      <h3>
         We are processing your order and will contact you for further details.
-      </p>
+      </h3>
     </div>
   );
 }

@@ -55,7 +55,12 @@ form{
    align-items: center;
 }
 
-
+.thankYou-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
 @media (min-width:50rem) {
     .order-form-container{
         width: 45rem;
