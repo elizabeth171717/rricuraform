@@ -114,12 +114,6 @@ const CateringOrderForm = () => {
             drink={drink}
             setDrink={setDrink}
           />
-
-          <PriceCalculator
-            tamaleFilling={tamaleFilling}
-            people={people}
-            onSubtotalChange={handleSubtotalChange} // This updates the subtotal
-          />
         </div>
         <div className="right">
           <CustomerInfo
@@ -140,7 +134,11 @@ const CateringOrderForm = () => {
             selectedTime={selectedTime}
             onTimeSelect={setSelectedTime}
           />
-
+          <PriceCalculator
+            tamaleFilling={tamaleFilling}
+            people={people}
+            onSubtotalChange={handleSubtotalChange} // This updates the subtotal
+          />
           {/* Pass the subtotal to TotalCalculator */}
           <TotalCalculator
             subtotal={subtotal}
