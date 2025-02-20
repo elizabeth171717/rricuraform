@@ -100,7 +100,9 @@ const CateringOrderForm = () => {
   return (
     <div className="order-form-container">
       <img src={Logo} />
-
+      <a href="https://www.rricuratamales.com" className="back-home-button">
+        ← Back to Home
+      </a>
       <h2>We required a 2 days notice in all orders</h2>
 
       <p> 2 Tamales plus Drink starting at $12.00 per person</p>
