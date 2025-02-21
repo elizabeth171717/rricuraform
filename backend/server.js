@@ -21,7 +21,7 @@ app.use(express.json());
 
 // ✅ CORS Configuration
 const allowedOrigins = [
-  
+ 
   "https://rricuraform-1.onrender.com", // ✅ Your deployed frontend
   "http://localhost:5173", // ✅ Local development
   "https://rricuraform.onrender.com", // ✅ Backend URL (for safety)
@@ -30,7 +30,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: allowedOrigins, // Allow only these origins
+  origin: allowedOrigins, // Removes empty values
   methods: ["GET", "POST", "OPTIONS"], // Allow specific request methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
 

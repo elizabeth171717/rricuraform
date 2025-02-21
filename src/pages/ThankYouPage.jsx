@@ -1,16 +1,16 @@
-import "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ThankYouPage() {
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // Set a timeout to redirect after 5 seconds
     const timer = setTimeout(() => {
-      window.location.href = "https://www.rricuratamales.com"; // ✅ Redirect to your website
+      navigate("https://www.rricuratamales.com"); // ✅ Redirect using useNavigate
     }, 5000);
 
-    // Clear the timeout if the component unmounts before redirecting
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="thankYou-container">
