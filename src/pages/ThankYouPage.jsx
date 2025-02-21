@@ -14,10 +14,10 @@ function ThankYouPage() {
 
   return (
     <div className="thankYou-container">
-      <h1>Gracias for Your Order!</h1>
-      <h3>
+      <h3>Gracias for Your Order!</h3>
+      <p>
         We are processing your order and will contact you for further details.
-      </h3>
+      </p>
     </div>
   );
 }

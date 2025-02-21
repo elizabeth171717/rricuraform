@@ -18,6 +18,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 
+
 // ✅ CORS Configuration
 const allowedOrigins = [
   
@@ -31,7 +32,8 @@ const allowedOrigins = [
 app.use(cors({
   origin: allowedOrigins, // Allow only these origins
   methods: ["GET", "POST", "OPTIONS"], // Allow specific request methods
-  allowedHeaders: ["Content-Type", "Authorization"] // Allow specific headers
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+
 }));
 
 
@@ -45,6 +47,8 @@ app.use("/api/orders", require("./routes/orderRoutes"));
 app.get("/", (req, res) => {
   res.send("🚀 API is running...");
 });
+
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;
