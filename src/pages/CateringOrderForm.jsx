@@ -107,9 +107,7 @@ const CateringOrderForm = () => {
       <div className="title-container">
         <h2>2 Tamales plus Drink starting at $12.00 per person</h2>
 
-        <p>
-          We required a 2 days notice in all orders, we do not deliver sundays
-        </p>
+        <p>We required a 2 days notice in all orders, we are closed sundays!</p>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="left">
