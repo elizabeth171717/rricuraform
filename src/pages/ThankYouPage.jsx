@@ -1,16 +1,13 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function ThankYouPage() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("https://www.rricuratamales.com"); // ✅ Redirect using useNavigate
+      window.location.href = "https://www.rricuratamales.com"; // ✅ Correct way to redirect externally
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, []);
 
   return (
     <div className="thankYou-container">
