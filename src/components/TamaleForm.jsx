@@ -2,6 +2,51 @@
 import "react";
 import PropTypes from "prop-types";
 
+import sweet from "../assets/sweettamale.png";
+import bananaleafpork from "../assets/bananaleafpork.jpg";
+import bananaleafchicken from "../assets/bananaleafchicken.jpg";
+import chickentamale from "../assets/chickentamale.jpg";
+import rajastamale from "../assets/rajastamale.jpg";
+import cornporktamale from "../assets/cornporktamale.jpg";
+import vegantamale from "../assets/cheeseredsauce.jpg";
+
+// Tamale options with image sources
+const tamaleOptions = [
+  {
+    value: "Rajas",
+    label: "2 Rajas tamale 'Pepper & Cheese'",
+    img: rajastamale,
+  },
+
+  {
+    value: "ChickenCornHusk",
+    label: "2 Chicken Corn Husk tamale",
+    img: chickentamale,
+  },
+  {
+    value: "PorkCornHusk",
+    label: "2 Pork Corn Husk tamale",
+    img: cornporktamale,
+  },
+  {
+    value: "ChickenBananaLeaf",
+    label: "2 Chicken Banana Leaf tamale",
+    img: bananaleafchicken,
+  },
+  {
+    value: "PorkBananaLeaf",
+    label: "2 Pork Banana Leaf tamale",
+    img: bananaleafpork,
+  },
+
+  { value: "Sweet", label: "2 Red Sweet Tamale", img: sweet },
+  {
+    value: "Vegan",
+    label: "2 Vegan tamale'Pepper, Cheese & vegan oil' ",
+    img: vegantamale,
+  },
+];
+
 const TamaleForm = ({
   people,
   setPeople,
@@ -16,7 +61,7 @@ const TamaleForm = ({
         <h3>Number of people</h3>
         <select
           value={people}
-          onChange={(e) => setPeople(e.target.value)}
+          onChange={(e) => setPeople(Number(e.target.value))} // Convert to number
           required
         >
           <option value="">Select</option>
@@ -30,49 +75,54 @@ const TamaleForm = ({
         </select>
       </div>
       <br />
+
+      {/* Tamale Selection (Now with images) */}
       <div className="tamalefilling">
         <h3>Choose Your Tamale:</h3>
-        <select
-          value={tamaleFilling}
-          onChange={(e) => setTamaleFilling(e.target.value)}
-          required
-        >
-          <option value="">Select</option>
-          <option value="ChickenBananaLeaf">Chicken Banana Leaf</option>
-          <option value="PorkBananaLeaf">Pork Banana Leaf</option>
-          <option value="ChickenCornHusk">Chicken Corn Husk</option>
-          <option value="PorkCornkHusk">Pork Corn Husk</option>
-          <option value="Rajas">Rajas</option>
-          <option value="Sweet">Sweet</option>
-          <option value="Vegan">Vegan</option>
-        </select>
+        <div className="tamale-options">
+          {tamaleOptions.map((tamale) => (
+            <div
+              key={tamale.value}
+              className={`tamale-card ${
+                tamaleFilling === tamale.value ? "selected" : ""
+              }`}
+              onClick={() => setTamaleFilling(tamale.value)}
+            >
+              <img src={tamale.img} alt={tamale.label} />
+              <p>{tamale.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <br />
-      <div className="drink">
-        <h3>Choose a Drink:</h3>
-        <select
-          value={drink}
-          onChange={(e) => setDrink(e.target.value)}
-          required
-        >
-          <option value="">Select</option>
-          <option value="Coke">Coke</option>
-          <option value="DietCoke">Diet Coke</option>
-          <option value="Sprite">Sprite</option>
-          <option value="Bottled Water">Bottled Water</option>
-        </select>
-      </div>
+
+      {/* Step 3: Select Drinks */}
+      {people > 0 && (
+        <div>
+          <h3>Choose {people} drinks</h3>
+          <p>
+            Choose between Coke, Diet Coke, Sprite, or Bottled Water. you can
+            mix
+          </p>
+          <br />
+          <input
+            type="text"
+            placeholder="Type in drinks ex: 5 cokes and 5 sprites"
+            value={drink}
+            onChange={(e) => setDrink(e.target.value)}
+          />
+        </div>
+      )}
     </div>
   );
 };
 
 TamaleForm.propTypes = {
-  people: PropTypes.string.isRequired,
+  people: PropTypes.number.isRequired,
   setPeople: PropTypes.func.isRequired,
   tamaleFilling: PropTypes.string.isRequired,
   setTamaleFilling: PropTypes.func.isRequired,
-
-  drink: PropTypes.string.isRequired,
+  drink: PropTypes.string,
   setDrink: PropTypes.func.isRequired,
 };
 

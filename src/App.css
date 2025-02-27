@@ -2,15 +2,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
 img{
     display: block;
-    max-width: 200px;
-    margin: 0 auto;
+  
 }
 
+a {text-decoration: none;}
+
+.Navbar{
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.logo img{
+  width: 100%;
+}
 .order-form-container{
     text-align: center;
     padding: 1rem;
@@ -28,15 +40,7 @@ h3{
     color: #9D0759;
     margin-bottom: .50rem;
 }
-button {
 
-    background-color: #9D0759;
-border: none;
-padding: .50rem;
-cursor: pointer;
-color: white;
-margin: 1rem 0;
-}
 
 
 button {
@@ -76,9 +80,7 @@ form div{
 
 
 @media (min-width: 50rem) {
-    body{
-        background-color: rgb(240, 237, 237);
-    }
+   
     .order-form-container{
      
       width: 45rem;
@@ -86,7 +88,100 @@ form div{
     }
     form{
         margin: 3rem 0;
-        flex-direction: row;
-        justify-content: space-between;
+       
     }
 }
+
+.tamale-options {
+    display: flex;
+flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .tamale-card {
+   margin: 2rem auto;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid ghostwhite;
+    padding: .25rem;
+    border-radius: 10px;
+  
+    transition: 0.3s;
+    width: 180px;
+  }
+  
+  .tamale-card img {
+   width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .tamale-card.selected {
+    border-color: #ff9800;
+    background-color: #fff3e0;
+  }
+  
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+ 
+
+  background-color: #646364;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+  .heading{
+padding: 1rem ;
+    text-align: center;
+  }
+
+  .links-to-form{
+margin: 0 auto;
+  }
+  
+  .box-container{
+    border: 3px solid rgb(155, 68, 82);
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    gap: 1rem;
+    width: 90%;
+   margin: 1rem auto;
+    background-color: white;
+  }
+
+  .box-container img{
+    width: 200px;
+    height: 150px;
+    border-radius: .50rem;
+ 
+  }
+
+  .cover-image{
+    margin: 5rem 0;
+  }
+
+  .cover-image img{
+    width: 100%;
+    height:600px;
+    object-fit: cover;
+  }
+
+
+  .checkout-container{
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: .50rem;
+align-items: center;
+text-align: center;
+
+  }

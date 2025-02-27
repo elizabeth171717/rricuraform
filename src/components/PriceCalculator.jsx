@@ -10,7 +10,7 @@ const PriceCalculator = ({ tamaleFilling, people, onSubtotalChange }) => {
       pricePerPerson = 15; // Price for Banana Leaf tamales
       break;
     case "ChickenCornHusk":
-    case "PorkCornkHusk":
+    case "PorkCornHusk":
     case "Rajas":
       pricePerPerson = 12; // Price for Corn Husk tamales
       break;
