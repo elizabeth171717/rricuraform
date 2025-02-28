@@ -67,7 +67,6 @@ const CheckoutPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Order submitted successfully!");
         navigate("/thank-you"); // Redirect to Thank You page
       } else {
         alert(`Error: ${data.message || "Something went wrong!"}`);
