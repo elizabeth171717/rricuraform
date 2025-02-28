@@ -67,7 +67,9 @@ const CheckoutPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/thank-you", { state: { customerName: name, email: email } }); // Pass customer name and email
+        navigate("/ThankYouPage", {
+          state: { customerName: name, email: email },
+        }); // Pass customer name and email
       } else {
         alert(`Error: ${data.message || "Something went wrong!"}`);
       }
