@@ -5,7 +5,7 @@ const DeliveryFee = () => {
 
   return (
     <div>
-      <h3>Delivery Fee: ${deliveryFee.toFixed(2)}</h3>
+      <p>Delivery Fee: ${deliveryFee.toFixed(2)}</p>
     </div>
   );
 };

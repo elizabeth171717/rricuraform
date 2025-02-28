@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import cover from "../assets/cover.jpg";
+
 import bulk from "../assets/bulk3.jpg";
 import tamalebox from "../assets/sprite.jpg";
 
@@ -35,9 +35,6 @@ const Rricura = () => {
             </div>
           </div>
         </Link>
-      </div>
-      <div className="cover-image">
-        <img src={cover} />
       </div>
     </div>
   );

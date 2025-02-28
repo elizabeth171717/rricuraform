@@ -123,6 +123,7 @@ const BulkOrderForm = () => {
         ))}
       </select>
       <br />
+      <br />
 
       {/* Tamale Type Selection (with images and clickable cards) */}
       <h3>Select your Tamale :</h3>
@@ -147,14 +148,14 @@ const BulkOrderForm = () => {
       {/* Display Prices */}
       {subtotalPrice > 0 && (
         <div>
-          <h3>
+          <p>
             Subtotal: <strong>${subtotalPrice.toFixed(2)}</strong>
-          </h3>
+          </p>
           <TaxCalculator subtotal={subtotalPrice} />
           <DeliveryFee />
-          <h2>
+          <p>
             Total Price: <strong>${totalPrice.toFixed(2)}</strong>
-          </h2>
+          </p>
         </div>
       )}
 

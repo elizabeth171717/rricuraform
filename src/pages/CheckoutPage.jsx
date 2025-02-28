@@ -67,7 +67,7 @@ const CheckoutPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/thank-you"); // Redirect to Thank You page
+        navigate("/thank-you", { state: { customerName: name, email: email } }); // Pass customer name and email
       } else {
         alert(`Error: ${data.message || "Something went wrong!"}`);
       }
@@ -79,77 +79,80 @@ const CheckoutPage = () => {
 
   return (
     <div className="checkout-container">
-      <Link to="/" className="back-home">
-        ⬅ Back to Home
-      </Link>
-      <h2>Submit Order</h2>
+      <div>
+        <Link to="/" className="back-home">
+          ⬅ Back to Home
+        </Link>
+        <h2>Submit Order</h2>
 
-      {/* Display details for combo orders */}
-      {order.orderType === "Combo Order" && (
-        <div>
-          <p>
-            <strong>Number of People:</strong> {order.people}
-          </p>
-          <p>
-            <strong>Tamale Filling:</strong> {order.tamaleFilling}
-          </p>
-          <p>
-            <strong>Drink:</strong> {order.drink}
-          </p>
-        </div>
-      )}
+        {/* Display details for combo orders */}
+        {order.orderType === "Combo Order" && (
+          <div>
+            <p>
+              <strong>Number of People:</strong> {order.people}
+            </p>
+            <p>
+              <strong>Tamale Filling:</strong> {order.tamaleFilling}
+            </p>
+            <p>
+              <strong>Drink:</strong> {order.drink}
+            </p>
+          </div>
+        )}
 
-      {/* Display details for bulk orders */}
-      {order.orderType === "bulk" && (
-        <div>
-          <p>
-            <strong>Quantity:</strong> {order.quantity} tamales
-          </p>
-          <p>
-            <strong>Tamale Type:</strong> {order.type}
-          </p>
-        </div>
-      )}
+        {/* Display details for bulk orders */}
+        {order.orderType === "bulk" && (
+          <div>
+            <p>
+              <strong>Quantity:</strong> {order.quantity} tamales
+            </p>
+            <p>
+              <strong>Tamale Type:</strong> {order.type}
+            </p>
+          </div>
+        )}
 
-      {/* Price Breakdown */}
-      <h3>Price Breakdown</h3>
-      <p>
-        <strong>Subtotal:</strong> ${order.subtotal.toFixed(2)}
-      </p>
-      {order.tax && (
+        {/* Price Breakdown */}
+        <h3>Price Breakdown</h3>
         <p>
-          <strong>Tax:</strong> ${order.tax.toFixed(2)}
+          <strong>Subtotal:</strong> ${order.subtotal.toFixed(2)}
         </p>
-      )}
-      <p>
-        <strong>Delivery Fee:</strong> ${order.deliveryFee.toFixed(2)}
-      </p>
-      <h3>
-        <strong>Total:</strong> ${order.total.toFixed(2)}
-      </h3>
+        {order.tax && (
+          <p>
+            <strong>Tax:</strong> ${order.tax.toFixed(2)}
+          </p>
+        )}
+        <p>
+          <strong>Delivery Fee:</strong> ${order.deliveryFee.toFixed(2)}
+        </p>
+        <h3>
+          <strong>Total:</strong> ${order.total.toFixed(2)}
+        </h3>
+      </div>
+      <div>
+        {/* Customer Info */}
+        <CustomerInfo
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          setPhone={setPhone}
+          address={address}
+          setAddress={setAddress}
+        />
 
-      {/* Customer Info */}
-      <CustomerInfo
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-        phone={phone}
-        setPhone={setPhone}
-        address={address}
-        setAddress={setAddress}
-      />
+        {/* Delivery Date */}
+        <DeliveryDateComponent onDateSelect={setDeliveryDate} />
 
-      {/* Delivery Date */}
-      <DeliveryDateComponent onDateSelect={setDeliveryDate} />
+        {/* Delivery Time */}
+        <DeliveryTimeComponent
+          selectedTime={deliveryTime}
+          onTimeSelect={setDeliveryTime}
+        />
 
-      {/* Delivery Time */}
-      <DeliveryTimeComponent
-        selectedTime={deliveryTime}
-        onTimeSelect={setDeliveryTime}
-      />
-
-      <button onClick={handleSubmit}>Submit Order</button>
+        <button onClick={handleSubmit}>Submit Order</button>
+      </div>
     </div>
   );
 };

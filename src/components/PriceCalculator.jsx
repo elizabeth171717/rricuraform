@@ -37,7 +37,7 @@ const PriceCalculator = ({ tamaleFilling, people, onSubtotalChange }) => {
     <div>
       {people > 0 && tamaleFilling && (
         <div>
-          <h3>Subtotal Price: ${subtotal.toFixed(2)}</h3>
+          <p>Subtotal Price: ${subtotal.toFixed(2)}</p>
         </div>
       )}
     </div>

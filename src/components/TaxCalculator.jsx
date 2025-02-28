@@ -7,7 +7,7 @@ const TaxCalculator = ({ subtotal }) => {
 
   return (
     <div>
-      <h3>Tax (8%): ${tax.toFixed(2)}</h3>
+      <p>Tax (8%): ${tax.toFixed(2)}</p>
     </div>
   );
 };
