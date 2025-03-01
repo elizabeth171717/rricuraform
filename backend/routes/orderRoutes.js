@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/orderModel"); // Ensure you have this model
-const { sendOrderConfirmation } = require("../services/emailService"); // Import the email function
+const { sendOrderConfirmation } = require("../emailService"); // Import the email function
 
 // Handle order submission
 router.post("/submit", async (req, res) => {
