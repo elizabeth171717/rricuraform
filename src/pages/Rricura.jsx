@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 
 import bulk from "../assets/bulk3.jpg";
+import Logo from "../assets/logo.png";
 import tamalebox from "../assets/sprite.jpg";
 
 const Rricura = () => {
   return (
     <div className="main-container">
       <div className="heading">
-        <h1>AUTHENTIC MEXICAN CATERING</h1>
-        <h4>
-          Whether you are hosting a family gathering, corporate event, or
-          special celebration, our catering delivers the warmth and soul of true
-          Mexican cuisine.
-        </h4>
+        <img className="logo" src={Logo} />
+        <h3>
+          Our catering delivers the warmth and soul of true Mexican cuisine
+        </h3>
       </div>
       <div className="links-to-form">
         {/* Link to the order form */}

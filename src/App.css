@@ -26,15 +26,18 @@ a {text-decoration: none;
  
 }
 
-h1 {
-  margin-bottom: 1rem;
-}
+
 
   .heading{
-    font-weight: bold;
+    
    
     text-align: center;
     padding: 1rem ;
+  }
+
+  .logo{
+    margin: 0 auto;
+    width: 250px;
   }
 
   .links-to-form{
@@ -52,7 +55,7 @@ margin: 0 auto;
     width: 90%;
    margin: 1rem auto;
     background-color: white;
-    box-shadow: 0 10px 30px #9D0759; /* Modern depth */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705); /* Modern depth */
   }
 
   .box-container:active {
@@ -86,20 +89,6 @@ h3{
 
 
 
-button {
-
-    background-color: #9D0759;
-border: none;
-padding: .50rem;
-cursor: pointer;
-color: white;
-margin: 1rem 0;
-transition: transform 0.1s ease-in-out;
-font-weight: bold;
-font-size: 1rem;
-border-radius: .50rem;
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705); /* Modern depth */
-}
 
 button:active {
     transform: scale(0.95); /* Shrinks the button slightly */
@@ -254,6 +243,6 @@ button {
 }
 
 button:hover {
-  background: #ff3b6b;
+  background: #9D0759;
   box-shadow: 0 6px 15px rgba(255, 59, 107, 0.4);
 }

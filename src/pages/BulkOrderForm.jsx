@@ -100,7 +100,10 @@ const BulkOrderForm = () => {
         ⬅ Back to Home
       </Link>
       <div className="title-container">
-        <h2>We bring the authentic flavors of Mexico straight to your event</h2>
+        <h2>
+          Order from 12 tamales for afamily gathering to 1000 for acorporate
+          event
+        </h2>
         <p>
           We require a 2-day notice for all orders. We do not deliver Sundays!
         </p>
