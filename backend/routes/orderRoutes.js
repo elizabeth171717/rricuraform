@@ -10,6 +10,12 @@ router.post("/submit", async (req, res) => {
 
   const { customerEmail, customerName, orderData } = req.body; // Destructure necessary info from req.body
 
+
+  if (!customerEmail || !customerName || !orderData) {
+    console.error("❌ Missing required fields:", { customerEmail, customerName, orderData });
+    return res.status(400).json({ message: "Missing required order details." });
+  }
+
   try {
     // Save the order to the database
     const newOrder = new Order(req.body);

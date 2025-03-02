@@ -64,7 +64,7 @@ const CateringOrderForm = () => {
         drink={drink}
         setDrink={setDrink}
       />
-
+      <br />
       <PriceCalculator
         tamaleFilling={tamaleFilling}
         people={people}

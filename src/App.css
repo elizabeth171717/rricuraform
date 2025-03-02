@@ -58,9 +58,11 @@ margin: 0 auto;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705); /* Modern depth */
   }
 
-  .box-container:active {
-    transform: scale(0.95); /* Shrinks the button slightly */
-  }
+
+.box-container:hover {
+  transform: translateY(-5px); /* Slight hover lift */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Increase shadow on hover */
+}
 
   .box-container img{
     width: 200px;

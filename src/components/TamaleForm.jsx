@@ -102,7 +102,7 @@ const TamaleForm = ({
           <h3>Choose {people} drinks</h3>
           <p>
             Choose between Coke, Diet Coke, Sprite, or Bottled Water. you can
-            mix
+            mix. WE will choose the drinks if left empty.
           </p>
           <br />
           <input
@@ -111,6 +111,7 @@ const TamaleForm = ({
             value={drink}
             onChange={(e) => setDrink(e.target.value)}
           />
+          <br />
         </div>
       )}
     </div>

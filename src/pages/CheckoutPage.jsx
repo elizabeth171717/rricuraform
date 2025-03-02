@@ -143,10 +143,11 @@ const CheckoutPage = () => {
           address={address}
           setAddress={setAddress}
         />
+        <br />
 
         {/* Delivery Date */}
         <DeliveryDateComponent onDateSelect={setDeliveryDate} />
-
+        <br />
         {/* Delivery Time */}
         <DeliveryTimeComponent
           selectedTime={deliveryTime}

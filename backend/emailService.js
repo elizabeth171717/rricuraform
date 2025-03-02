@@ -14,6 +14,11 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendOrderConfirmation = async (customerEmail, customerName, orderData) => {
+
+  if (!orderData || typeof orderData !== "object") {
+    console.error("❌ orderData is missing or not an object:", orderData);
+    throw new Error("Invalid orderData provided to sendOrderConfirmation.");
+  }
   try {
     const mailOptions = {
       from: `"Rricura Tamales Mexicanos" <${process.env.EMAIL_USER}>`, // ✅ Your sender name & email
