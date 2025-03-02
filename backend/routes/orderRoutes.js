@@ -8,7 +8,10 @@ router.post("/submit", async (req, res) => {
   console.log("Received order data:", req.body); // Debugging log
   console.log("Received request body:", JSON.stringify(req.body, null, 2)); // Pretty print JSON
 
-  const { customerEmail, customerName, orderData } = req.body; // Destructure necessary info from req.body
+  const customerEmail = req.body.email;
+const customerName = req.body.name;
+const orderData = req.body; // The entire request body is the order data
+
 
 
   if (!customerEmail || !customerName || !orderData) {
