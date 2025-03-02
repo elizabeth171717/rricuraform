@@ -8,7 +8,7 @@ router.post("/submit", async (req, res) => {
   console.log("Received order data:", req.body); // Debugging log
   console.log("Received request body:", JSON.stringify(req.body, null, 2)); // Pretty print JSON
 
-  const { customerEmail, customerName, orderDetails } = req.body; // Destructure necessary info from req.body
+  const { customerEmail, customerName, orderData } = req.body; // Destructure necessary info from req.body
 
   try {
     // Save the order to the database
@@ -16,7 +16,7 @@ router.post("/submit", async (req, res) => {
     await newOrder.save();
 
     // Send the order confirmation email to the customer
-    await sendOrderConfirmation(customerEmail, customerName, orderDetails);
+    await sendOrderConfirmation(customerEmail, customerName, orderData);
 
     res.status(201).json({ message: "Order submitted successfully and confirmation email sent!" });
   } catch (error) {

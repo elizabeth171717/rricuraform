@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendOrderConfirmation = async (customerEmail, customerName, orderDetails) => {
+export const sendOrderConfirmation = async (customerEmail, customerName, orderData) => {
   try {
     const mailOptions = {
       from: `"Rricura Tamales Mexicanos" <${process.env.EMAIL_USER}>`, // ✅ Your sender name & email
@@ -23,8 +23,10 @@ export const sendOrderConfirmation = async (customerEmail, customerName, orderDe
         <h2>Thank You for Your Order, ${customerName}!</h2>
         <p>We are processing your order and will contact you soon.</p>
         <h3>Order Details:</h3>
-        <pre>${JSON.stringify(orderDetails, null, 2)}</pre>
-        <p><strong>Total Paid:</strong> $${orderDetails.total.toFixed(2)}</p>
+        <pre>${JSON.stringify(orderData, null, 2)}</pre>
+        
+
+        <p><strong>Total Paid:</strong> $${orderData.total.toFixed(2)}</p>
         <p>If you have any questions, reply to this email.</p>
         <br>
         <p>Best,</p>
