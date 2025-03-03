@@ -53,7 +53,8 @@ const CheckoutPage = () => {
     };
 
     try {
-      const response = await fetch(
+      // Submit the order to the backend
+      const orderResponse = await fetch(
         "https://rricuraform.onrender.com/api/orders/submit",
         {
           method: "POST",
@@ -64,14 +65,50 @@ const CheckoutPage = () => {
         }
       );
 
-      const data = await response.json();
+      const orderDataResponse = await orderResponse.json();
 
-      if (response.ok) {
-        navigate("/ThankYouPage", {
-          state: { customerName: name, email: email },
-        }); // Pass customer name and email
+      if (orderResponse.ok) {
+        // Send email after order submission
+        const emailData = {
+          customerEmail: email,
+          customerName: name,
+          orderSummary: `
+            Order Type: ${order.orderType}\n
+            People: ${order.people || "N/A"}\n
+            Tamale Filling: ${order.tamaleFilling || "N/A"}\n
+            Drink: ${order.drink || "N/A"}\n
+            Quantity: ${order.quantity || "N/A"}\n
+            Tamale Type: ${order.type || "N/A"}\n
+            Subtotal: $${order.subtotal.toFixed(2)}\n
+            Tax: $${order.tax?.toFixed(2) || "0.00"}\n
+            Delivery Fee: $${order.deliveryFee.toFixed(2)}\n
+            Total: $${order.total.toFixed(2)}
+          `,
+        };
+
+        const emailResponse = await fetch(
+          "https://rricuraform.onrender.com/api/send-email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailData),
+          }
+        );
+
+        const emailDataResponse = await emailResponse.json();
+
+        if (emailResponse.ok) {
+          alert("Order submitted successfully and confirmation email sent!");
+          navigate("/ThankYouPage", {
+            state: { customerName: name, email: email },
+          }); // Pass customer name and email
+        } else {
+          alert(`Failed to send email: ${emailDataResponse.error}`);
+        }
       } else {
-        alert(`Error: ${data.message || "Something went wrong!"}`);
+        alert(`Error: ${orderDataResponse.message || "Something went wrong!"}`);
       }
     } catch (error) {
       console.error("Error submitting order:", error);

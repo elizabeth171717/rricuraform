@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/orderModel"); // Ensure you have this model
+const { sendOrderProcessingEmail } = require("../controllers/emailController"); // ✅ Import email function
+
 
 // Handle order submission
 router.post("/submit", async (req, res) => {
@@ -14,7 +16,14 @@ router.post("/submit", async (req, res) => {
     const newOrder = new Order(req.body);
     await newOrder.save();
 
-   
+
+    // ✅ Extract email details from the request body
+    const { customerEmail, customerName, orderSummary } = req.body;
+
+    // ✅ Send order processing email
+    if (customerEmail && customerName && orderSummary) {
+      await sendOrderProcessingEmail(customerEmail, customerName, orderSummary);
+    }
 
     res.status(201).json({ message: "Order submitted successfully and confirmation email sent!" });
   } catch (error) {
