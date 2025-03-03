@@ -9,13 +9,13 @@ router.post("/submit", async (req, res) => {
   console.log("Received request body:", JSON.stringify(req.body, null, 2)); // Pretty print JSON
 
   const customerEmail = req.body.email;
-const customerName = req.body.name;
+
 const orderData = req.body; // The entire request body is the order data
 
 
 
-  if (!customerEmail || !customerName || !orderData) {
-    console.error("❌ Missing required fields:", { customerEmail, customerName, orderData });
+  if (!customerEmail || !orderData) {
+    console.error("❌ Missing required fields:", { customerEmail, orderData });
     return res.status(400).json({ message: "Missing required order details." });
   }
 
@@ -25,7 +25,7 @@ const orderData = req.body; // The entire request body is the order data
     await newOrder.save();
 
     // Send the order confirmation email to the customer
-    await sendOrderConfirmation(customerEmail, customerName, orderData);
+    await sendOrderConfirmation(customerEmail, orderData);
 
     res.status(201).json({ message: "Order submitted successfully and confirmation email sent!" });
   } catch (error) {
