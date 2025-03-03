@@ -14,8 +14,7 @@ router.post("/submit", async (req, res) => {
     const newOrder = new Order(req.body);
     await newOrder.save();
 
-    // Send the order confirmation email to the customer
-    await sendOrderConfirmation(customerEmail, orderData);
+   
 
     res.status(201).json({ message: "Order submitted successfully and confirmation email sent!" });
   } catch (error) {
