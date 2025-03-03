@@ -25,17 +25,8 @@ export const sendOrderConfirmation = async (customerEmail, customerName, orderDa
       to: customerEmail, // ✅ Customer's email
       subject: "Order Confirmation - Rricura Tamales Mexicanos",
       html: `
-        <h2>Thank You for Your Order, ${customerName}!</h2>
-        <p>We are processing your order and will contact you soon.</p>
-        <h3>Order Details:</h3>
-        <pre>${JSON.stringify(orderData, null, 2)}</pre>
-        
-
-        <p><strong>Total Paid:</strong> $${orderData.total.toFixed(2)}</p>
-        <p>If you have any questions, reply to this email.</p>
-        <br>
-        <p>Best,</p>
-        <p>Rricura Tamales Mexicanos</p>
+        <h2>Thank You for Your Order!</h2>
+       
       `,
     };
 
