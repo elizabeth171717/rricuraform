@@ -12,6 +12,19 @@ const sendOrderProcessingEmail = async (customerEmail, customerName, orderSummar
         let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
         apiInstance.apiClient.authentications["api-key"].apiKey = process.env.BREVO_API_KEY;
 
+        // Debugging: Check orderSummary type
+        console.log("Order Summary Type:", typeof orderSummary);
+        console.log("Order Summary Value:", orderSummary);
+
+        // Ensure orderSummary is a string
+        if (typeof orderSummary !== "string") {
+            if (Array.isArray(orderSummary)) {
+                orderSummary = orderSummary.join(", "); // Convert array to string
+            } else {
+                orderSummary = JSON.stringify(orderSummary, null, 2); // Convert object to formatted string
+            }
+        }
+
         let sendSmtpEmail = {
             to: [{ email: customerEmail, name: customerName }],
             sender: { email: "your-email@yourdomain.com", name: "Rricura Tamales Mexicanos" },
