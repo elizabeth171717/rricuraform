@@ -1,23 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/orderModel"); // Ensure you have this model
-const { sendOrderConfirmation } = require("../emailService"); // Import the email function
 
 // Handle order submission
 router.post("/submit", async (req, res) => {
   console.log("Received order data:", req.body); // Debugging log
   console.log("Received request body:", JSON.stringify(req.body, null, 2)); // Pretty print JSON
 
-  const customerEmail = req.body.email;
-
-const orderData = req.body; // The entire request body is the order data
-
-
-
-  if (!customerEmail || !orderData) {
-    console.error("❌ Missing required fields:", { customerEmail, orderData });
-    return res.status(400).json({ message: "Missing required order details." });
-  }
+  
 
   try {
     // Save the order to the database
