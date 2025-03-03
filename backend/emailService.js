@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendOrderConfirmation = async (customerEmail, customerName, orderData) => {
+export const sendOrderConfirmation = async (customerEmail, orderData) => {
 
   if (!orderData || typeof orderData !== "object") {
     console.error("❌ orderData is missing or not an object:", orderData);
