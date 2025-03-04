@@ -29,14 +29,6 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
 }));
 
-// ✅ Import Routes
-const orderRoutes = require("./routes/orderRoutes");
-const { sendOrderProcessingEmail } = require("./controllers/emailController"); // ✅ Import email function
-
-// ✅ Use Routes
-app.use("/api/orders", orderRoutes);
-app.post("/api/send-email", sendOrderProcessingEmail); // ✅ Add email route
-
 // ✅ Test Route
 app.get("/", (req, res) => {
   res.send("🚀 API is running...");
