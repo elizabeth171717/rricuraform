@@ -65,13 +65,26 @@ const CheckoutPage = () => {
         }
       );
 
-      const orderDataResponse = await orderResponse.json();
+      const text = await orderResponse.text(); // Read raw response
+      console.log("Raw response from server:", text);
 
-      if (orderResponse.ok) {
-        alert("Order submitted successfully!");
-        navigate("/ThankYouPage");
-      } else {
-        alert(`Error: ${orderDataResponse.message || "Something went wrong!"}`);
+      try {
+        const orderDataResponse = JSON.parse(text); // Parse JSON
+        console.log("Parsed JSON response:", orderDataResponse);
+
+        if (orderResponse.ok) {
+          alert("Order submitted successfully!");
+          navigate("/ThankYouPage", {
+            state: { customerName: name, email: email },
+          });
+        } else {
+          alert(
+            `Error: ${orderDataResponse.message || "Something went wrong!"}`
+          );
+        }
+      } catch (error) {
+        console.error("Failed to parse JSON response:", error);
+        alert("Unexpected server response. Please try again later.");
       }
     } catch (error) {
       console.error("Error submitting order:", error);
@@ -87,7 +100,6 @@ const CheckoutPage = () => {
         </Link>
         <h2>Submit Order</h2>
 
-        {/* Display details for combo orders */}
         {order.orderType === "Combo Order" && (
           <div>
             <p>
@@ -102,7 +114,6 @@ const CheckoutPage = () => {
           </div>
         )}
 
-        {/* Display details for bulk orders */}
         {order.orderType === "bulk" && (
           <div>
             <p>
@@ -114,7 +125,6 @@ const CheckoutPage = () => {
           </div>
         )}
 
-        {/* Price Breakdown */}
         <h3>Price Breakdown</h3>
         <p>
           <strong>Subtotal:</strong> ${order.subtotal.toFixed(2)}
@@ -131,8 +141,8 @@ const CheckoutPage = () => {
           <strong>Total:</strong> ${order.total.toFixed(2)}
         </h3>
       </div>
+
       <div>
-        {/* Customer Info */}
         <CustomerInfo
           name={name}
           setName={setName}
@@ -145,10 +155,8 @@ const CheckoutPage = () => {
         />
         <br />
 
-        {/* Delivery Date */}
         <DeliveryDateComponent onDateSelect={setDeliveryDate} />
         <br />
-        {/* Delivery Time */}
         <DeliveryTimeComponent
           selectedTime={deliveryTime}
           onTimeSelect={setDeliveryTime}
